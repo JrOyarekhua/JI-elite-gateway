@@ -1,3 +1,6 @@
+Index · HTML
+Copy
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,155 +8,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:image" content="https://www.jielitehealth.com/images/logo.png">
     <title>J&I Elite Health & Wellness | Global Gateway</title>
+
+    <!-- Tailwind config — brand colors registered as utilities (text-ji-gold etc.) -->
+    <script>
+        window.tailwind = { config: {
+            theme: {
+                extend: {
+                    colors: {
+                        'ji-gold':  '#C5A059',
+                        'ji-navy':  '#1A202C',
+                        'ji-cream': '#FDFBF7',
+                    }
+                }
+            }
+        }};
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
+
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --ji-cream: #FDFBF7;
-            --ji-navy: #1A202C;
-            --ji-gold: #C5A059;
-            --transition-speed: 1.2s;
-            --bezier-curve: cubic-bezier(0.22, 1, 0.36, 1);
-        }
 
-        body {
-            background-color: var(--ji-navy);
-            color: var(--ji-cream);
-            font-family: 'Lato', sans-serif;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        h1, h2, .serif {
-            font-family: 'Playfair Display', serif;
-        }
-
-        /* Abstracted Design Tokens */
-        .region-card {
-            transition: all var(--transition-speed) var(--bezier-curve);
-        }
-
-        .bg-asset {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(100%);
-            opacity: 0.6;
-            transition: transform var(--transition-speed) var(--bezier-curve), 
-                        filter var(--transition-speed) var(--bezier-curve);
-            z-index: 0;
-        }
-
-        .overlay {
-            position: absolute;
-            inset: 0;
-            background-color: rgba(26, 32, 44, 0.85);
-            transition: background-color var(--transition-speed) var(--bezier-curve);
-            z-index: 10;
-        }
-
-        .gold-line {
-            height: 1px;
-            width: 0;
-            background-color: var(--ji-gold);
-            margin-left: auto;
-            margin-right: auto;
-            transition: width var(--transition-speed) var(--bezier-curve);
-        }
-
-        /* Interaction Logic */
-        .region-card:hover .bg-asset {
-            filter: grayscale(0%);
-            transform: scale(1.1);
-        }
-
-        .region-card:hover .overlay {
-            background-color: rgba(26, 32, 44, 0.3);
-        }
-
-        .region-card:hover .gold-line {
-            width: 120px;
-        }
-
-        /* Responsive Architecture */
-        @media (min-width: 768px) {
-            body { overflow: hidden; }
-            header { position: absolute; top: 0; left: 0; width: 100%; pointer-events: none; }
-            footer { position: absolute; bottom: 0; left: 0; width: 100%; }
-        }
-
-        @media (max-width: 767px) {
-            body { overflow-y: auto; }
-            .main-container { flex-direction: column; height: auto; }
-            .region-card { min-height: 60vh; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05); }
-            header { position: relative; padding: 3rem 1rem; }
-            footer { position: relative; padding: 3rem 1rem; }
-        }
-    </style>
+    <!-- All component styles live in style.css -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="antialiased">
 
-    <!-- GLOBAL HEADER - Now Relative/Flow-based on Mobile -->
-    <header class="z-50 py-12 text-center transition-all">
-        <div class="tracking-[0.6em] text-white text-xl md:text-3xl uppercase font-serif">
-            J&I <span class="text-[#C5A059]">ELITE</span>
-        </div>
-        <p class="text-[10px] uppercase tracking-[0.4em] text-[#C5A059] mt-3 font-bold">Health & Wellness Sanctuary</p>
-    </header>
+    <div class="viewport-frame"></div>
 
-    <main class="main-container flex flex-1 w-full">
-        
+    <main class="main-container">
+
+        <header>
+            <div class="header-title text-xl md:text-3xl">
+                J&amp;I <span>ELITE</span>
+            </div>
+            <p class="text-[10px] uppercase tracking-[0.4em] text-ji-gold mt-3 font-bold">Health &amp; Wellness Sanctuary</p>
+            <img src="images/transparent_logo.png" alt="J&amp;I Elite" class="logo-img">
+        </header>
+
         <!-- ABUJA, NIGERIA -->
-        <a href="https://ng.jielitehealth.com" class="region-card group relative flex-1 border-white/5 overflow-hidden flex items-center justify-center md:border-r">
-            <!-- Image Asset: Abuja -->
-            <img src="images/abuja.jpg" alt="Abuja Sanctuary" class="bg-asset">
-            
+        <a href="https://ng.jielitehealth.com" rel="noopener noreferrer" class="region-card group">
+            <img
+                src="images/nigerian_woman.jpeg"
+                alt="Abuja Sanctuary"
+                class="bg-asset"
+                loading="eager"
+            >
             <div class="overlay"></div>
-            
-            <div class="relative z-20 text-center px-12 py-20">
-                <span class="text-[#C5A059] text-[10px] font-bold tracking-[0.4em] uppercase block mb-6 opacity-0 group-hover:opacity-100 transition-all duration-700 transform translate-y-4 group-hover:translate-y-0">The West African Hub</span>
-                <h2 class="text-5xl md:text-7xl font-serif mb-6 tracking-tight">Abuja</h2>
-                <div class="gold-line mb-8"></div>
-                <p class="text-xs md:text-sm tracking-[0.2em] uppercase text-gray-300 font-light max-w-xs mx-auto leading-loose opacity-80 group-hover:opacity-100">
-                    Maitama Sanctuary <br> Restorative Pelvic Science & <br> Maternal Excellence
-                </p>
-                <div class="mt-10 opacity-0 group-hover:opacity-100 transition-all duration-700 transform translate-y-2 group-hover:translate-y-0">
-                    <span class="text-[10px] uppercase tracking-[0.3em] bg-white/10 backdrop-blur-md border border-white/20 px-8 py-3 text-white hover:bg-[#C5A059] hover:border-[#C5A059]">Visit Page</span>
-                </div>
+            <div class="content-wrap">
+                <div class="gold-accent-line"></div>
+                <span class="location-label">West African Sanctuary</span>
+                <h2 class="location-name font-serif">Abuja</h2>
+                <p class="location-desc">Maitama — Restorative Pelvic Science &amp; Maternal Excellence</p>
+                <button
+                    onclick="window.location='https://ng.jielitehealth.com'"
+                    class="enter-portal-cta"
+                >Enter Portal</button>
             </div>
         </a>
 
-        <!-- Abhu Dabi, UAE -->
-        <a href="https://uae.jielitehealth.com" class="region-card group relative flex-1 overflow-hidden flex items-center justify-center">
-            <!-- Image Asset: Dubai -->
-            <img src="images/dubai.jpg" alt="Dubai Gateway" class="bg-asset">
-            
+        <!-- ABU DHABI, UAE -->
+        <a href="https://uae.jielitehealth.com" rel="noopener noreferrer" class="region-card group border-l border-white/5">
+            <img
+                src="images/abu_dhabi_woman.jpeg"
+                alt="Abu Dhabi Gateway"
+                class="bg-asset dubai-img"
+                loading="eager"
+            >
             <div class="overlay"></div>
-            
-            <div class="relative z-20 text-center px-12 py-20">
-                <span class="text-[#C5A059] text-[10px] font-bold tracking-[0.4em] uppercase block mb-6 opacity-0 group-hover:opacity-100 transition-all duration-700 transform translate-y-4 group-hover:translate-y-0">The Global Gateway</span>
-                <h2 class="text-5xl md:text-7xl font-serif mb-6 tracking-tight">Dubai</h2>
-                <div class="gold-line mb-8"></div>
-                <p class="text-xs md:text-sm tracking-[0.2em] uppercase text-gray-300 font-light max-w-xs mx-auto leading-loose opacity-80 group-hover:opacity-100">
-                    Medical Concierge <br> Advanced Longevity & <br> Precision Wellness Protocols
-                </p>
-                <div class="mt-10 opacity-0 group-hover:opacity-100 transition-all duration-700 transform translate-y-2 group-hover:translate-y-0">
-                    <span class="text-[10px] uppercase tracking-[0.3em] bg-white/10 backdrop-blur-md border border-white/20 px-8 py-3 text-white hover:bg-[#C5A059] hover:border-[#C5A059]">Visit Page</span>
-                </div>
+            <div class="content-wrap">
+                <div class="gold-accent-line"></div>
+                <span class="location-label">Global Gateway Hub</span>
+                <h2 class="location-name font-serif">Abu Dhabi</h2>
+                <p class="location-desc">Medical Concierge — Advanced Longevity &amp; Precision Wellness Protocols</p>
+                <button
+                    onclick="window.location='https://uae.jielitehealth.com'"
+                    class="enter-portal-cta"
+                >Enter Portal</button>
             </div>
         </a>
 
     </main>
 
-    <!-- FOOTER INFO -->
-    <footer class="z-50 py-10 flex flex-col md:flex-row justify-between px-12 items-center text-[9px] uppercase tracking-[0.4em] text-gray-500 gap-6">
-        <div class="order-2 md:order-1">World-Class Care. Zero Compromise.</div>
-        <div class="text-[#C5A059] order-3">© J&I ELITE 2024</div>
+    <footer class="flex flex-col md:flex-row justify-between px-16 items-center text-[9px] uppercase tracking-[0.4em] text-gray-500 gap-6">
+        <div class="order-2 md:order-1 hidden md:block">World-Class Care. Zero Compromise.</div>
+        <div class="text-ji-gold order-3 pointer-events-auto">&copy; J&amp;I ELITE <span id="current-year">2024</span></div>
     </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        document.querySelectorAll('.bg-asset').forEach(img => {
+            img.addEventListener('error', () => { img.style.display = 'none'; });
+        });
+    </script>
 
 </body>
 </html>
